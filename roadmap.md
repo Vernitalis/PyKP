@@ -23,7 +23,7 @@ Jan Kot, Emil Gruszecki, Filip Łukasik
     -   permission management
     -   favorites
     -   per user plans (???)
--   technologies: Python, Django, Scrapy, PostgreSQL/MySQL/SQLite, OpenStreetMap
+-   technologies: Python, Django, Scrapy, PostgreSQL/MySQL, OpenStreetMap
 
 ## Work schedule
 
