@@ -1,10 +1,9 @@
-#!/usr/bin/env python3
-
 from pykp.scraper.items import CredentialsItem
-from scrapy import Spider
 import re
+import scrapy
 
-class CredentialsSpider(Spider):
+
+class CredentialsSpider(scrapy.Spider):
     name = "credentials"
     allowed_domains = ["portalpasazera.pl"]
     start_urls = ["https://www.portalpasazera.pl"]

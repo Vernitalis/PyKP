@@ -1,7 +1,6 @@
-#!/usr/bin/env python3
-
 from pykp.scraper.items import StationItem
 from pykp.scraper.spiders.paginated import PaginatedSpider
+
 
 letters = "aąbcćdeęfghijklłmnńoóprstuyzźż"
 

@@ -1,6 +1,7 @@
 import scrapy
 import urllib.parse
 
+
 class PaginatedSpider(scrapy.Spider):
 
     def parse(self, response):

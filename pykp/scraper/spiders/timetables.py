@@ -1,9 +1,9 @@
-from scrapy import Spider
-from scrapy.http import Request, Response
+import scrapy
 from urllib.parse import urlencode
 import json
 
-class TimetablesSpider(Spider):
+
+class TimetablesSpider(scrapy.Spider):
     name = "timetables"
     allowed_domains = ["portalpasazera.pl"]
 
@@ -23,9 +23,9 @@ class TimetablesSpider(Spider):
 
         for t in ["00:00", "06:00", "12:00", "18:00"]:
             data['kryteria[G]'] = t
-            yield Request(url=url, method="POST", headers=headers, cookies=credentials["cookies"], body=urlencode(data))
+            yield scrapy.Request(url=url, method="POST", headers=headers, cookies=credentials["cookies"], body=urlencode(data))
 
 
-    def parse(self, response: Response):
+    def parse(self, response):
         yield json.loads(response.text)
 

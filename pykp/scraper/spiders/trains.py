@@ -2,6 +2,7 @@ import scrapy
 from pykp.scraper.items import TrainItem
 from pykp.scraper.spiders.paginated import PaginatedSpider
 
+
 class TrainsSpider(PaginatedSpider):
     name = "trains"
     allowed_domains = ["portalpasazera.pl"]
