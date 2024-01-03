@@ -1,9 +1,11 @@
 from scrapy import Field, Item
 
+
 class CredentialsItem(Item):
     cookies = Field()
     headers = Field()
     token = Field()
+
 
 class StationItem(Item):
     id = Field()
@@ -11,6 +13,7 @@ class StationItem(Item):
     key = Field()
     name = Field()
     nz = Field()
+
 
 class TrainItem(Item):
     carrier = Field()
@@ -22,3 +25,8 @@ class TrainItem(Item):
     start = Field()
     track = Field()
     url = Field()
+
+class LocationItem(Item):
+    station_id = Field()
+    x = Field()
+    y = Field()
