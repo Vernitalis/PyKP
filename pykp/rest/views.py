@@ -8,6 +8,7 @@ from overpy import Overpass
 
 # TODO: Add some more error logging
 
+
 @csrf_exempt
 @require_http_methods(["POST"])
 def add_station(request: HttpRequest):
@@ -16,8 +17,9 @@ def add_station(request: HttpRequest):
         data = json.loads(body)
         Station.from_dict(data).save()
         return HttpResponse(b"OK")
-    except(Exception):
+    except Exception:
         return HttpResponseBadRequest(b"Couldn't load the JSON file")
+
 
 @csrf_exempt
 @require_http_methods(["POST"])
@@ -32,6 +34,7 @@ def import_stations(request: HttpRequest):
     except Exception as e:
         print(e)
         return HttpResponseBadRequest(b"Couldn't load the JSON file")
+
 
 @csrf_exempt
 @require_http_methods(["GET"])
@@ -53,7 +56,15 @@ def fetch_locations(request: HttpRequest):
         locations = []
         for node in query_response.nodes:
             try:
-                locations.append(Location(name=node.tags["name"], lat=node.lat, lon=node.lon, type=node.tags["railway"], id=node.id))
+                locations.append(
+                    Location(
+                        name=node.tags["name"],
+                        lat=node.lat,
+                        lon=node.lon,
+                        type=node.tags["railway"],
+                        id=node.id,
+                    )
+                )
             except:
                 pass
         Location.objects.bulk_create(locations)

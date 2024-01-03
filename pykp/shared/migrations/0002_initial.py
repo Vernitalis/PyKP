@@ -4,37 +4,36 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
     dependencies = [
-        ('shared', '0001_initial'),
+        ("shared", "0001_initial"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Location',
+            name="Location",
             fields=[
-                ('name', models.TextField(primary_key=True, serialize=False)),
-                ('lat', models.FloatField()),
-                ('lon', models.FloatField()),
-                ('type', models.TextField()),
+                ("name", models.TextField(primary_key=True, serialize=False)),
+                ("lat", models.FloatField()),
+                ("lon", models.FloatField()),
+                ("type", models.TextField()),
             ],
             options={
-                'db_table': 'locations',
+                "db_table": "locations",
             },
         ),
         migrations.CreateModel(
-            name='Station',
+            name="Station",
             fields=[
-                ('name', models.TextField(primary_key=True, serialize=False)),
-                ('nz', models.TextField()),
-                ('id', models.IntegerField()),
-                ('key', models.TextField()),
-                ('iso', models.TextField()),
+                ("name", models.TextField(primary_key=True, serialize=False)),
+                ("nz", models.TextField()),
+                ("id", models.IntegerField()),
+                ("key", models.TextField()),
+                ("iso", models.TextField()),
             ],
             options={
-                'db_table': 'stations',
+                "db_table": "stations",
             },
         ),
     ]

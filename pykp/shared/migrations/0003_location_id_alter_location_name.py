@@ -4,20 +4,19 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('shared', '0002_initial'),
+        ("shared", "0002_initial"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='location',
-            name='id',
+            model_name="location",
+            name="id",
             field=models.AutoField(default=1, primary_key=True, serialize=False),
         ),
         migrations.AlterField(
-            model_name='location',
-            name='name',
+            model_name="location",
+            name="name",
             field=models.TextField(),
         ),
     ]

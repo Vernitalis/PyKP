@@ -17,16 +17,22 @@ class CredentialsSpider(scrapy.Spider):
         token_cookie = next(cookies_filter)
 
         headers = {}
-        cookies = { "__RequestVerificationToken": token_cookie.split("; ")[0].split("=")[1] }
+        cookies = {
+            "__RequestVerificationToken": token_cookie.split("; ")[0].split("=")[1]
+        }
 
         for script in response.xpath("/html/body/script/text()").getall():
             try:
-                key_value = re.fullmatch(r"\$\.ajaxSetup\({ headers: { '(.*)' } }\);", script)[1].split("': '")
+                key_value = re.fullmatch(
+                    r"\$\.ajaxSetup\({ headers: { '(.*)' } }\);", script
+                )[1].split("': '")
                 headers[key_value[0]] = key_value[1]
-            except(Exception):
+            except Exception:
                 pass
 
-        token = response.xpath('//input[@name="__RequestVerificationToken"]/@value').get()
+        token = response.xpath(
+            '//input[@name="__RequestVerificationToken"]/@value'
+        ).get()
         headers["__RequestVerificationToken"] = token
 
         yield CredentialsItem(token=token, headers=headers, cookies=cookies)
