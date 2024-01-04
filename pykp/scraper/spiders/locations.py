@@ -1,4 +1,3 @@
-from os import setreuid
 import scrapy
 import json
 from urllib.parse import urlencode
