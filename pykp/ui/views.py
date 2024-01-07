@@ -1,5 +1,5 @@
-# from django.shortcuts import render
-from django.http import HttpRequest, HttpResponse
+from django.shortcuts import render
+from django.http import HttpRequest
 from pykp.shared.models import Location
 import folium
 from folium.plugins import FastMarkerCluster
@@ -19,5 +19,5 @@ def homepage(request: HttpRequest):
     cluster = FastMarkerCluster(data=markers)
     cluster.add_to(m)
 
-    response_body = m.get_root().render().encode()
-    return HttpResponse(response_body)
+    context = {"map": m._repr_html_()}
+    return render(request, "index.html", context)
