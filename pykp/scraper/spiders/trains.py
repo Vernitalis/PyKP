@@ -1,6 +1,7 @@
 import scrapy
 from pykp.scraper.items import TrainItem
 from pykp.scraper.spiders.paginated import PaginatedSpider
+from urllib.parse import urlparse, parse_qs
 
 
 class TrainsSpider(PaginatedSpider):
@@ -31,6 +32,9 @@ class TrainsSpider(PaginatedSpider):
             start = self.prepare(fields[6].xpath("./strong/span[1]/text()"))
             destination = self.prepare(fields[6].xpath("./strong/span[2]/text()"))
             url = self.prepare(row.xpath("./a/@href"))
+            parsed_url = urlparse(url)
+            url_query = parse_qs(parsed_url.query)
+
             item = TrainItem(
                 departure=departure,
                 platform=platform,
@@ -40,6 +44,7 @@ class TrainsSpider(PaginatedSpider):
                 id=id,
                 start=start,
                 destination=destination,
-                url=url,
+                pid=url_query["pid"][0],
+                sid=url_query["sid"][0],
             )
             yield item

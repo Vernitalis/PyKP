@@ -24,7 +24,9 @@ class TrainItem(Item):
     platform = Field()
     start = Field()
     track = Field()
-    url = Field()
+    sid = Field()
+    pid = Field()
+
 
 class LocationItem(Item):
     station_id = Field()
