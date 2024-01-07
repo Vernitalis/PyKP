@@ -6,9 +6,10 @@ from pykp.scraper.spiders.paginated import PaginatedSpider
 class TrainsSpider(PaginatedSpider):
     name = "trains"
     allowed_domains = ["portalpasazera.pl"]
-    start_urls = [
-        "https://portalpasazera.pl/WynikiWyszukiwania/ZnajdzPociag?sid=Yscc2FfZuluscc2Feumvag8p1eYrVLkFOwdrCy30fWSLozlULG69scc2FUneX5xv30ZF2ILG8YWe8rmnKLagOtAxkgXIQlcWRZNepCvjGj8PPSczR53dQn4PCnpMGkQ0FeIA4v8kT7TP"
-    ]
+    url = "https://portalpasazera.pl/WynikiWyszukiwania/ZnajdzPociag?sid={ref}"
+
+    def start_requests(self):
+        yield scrapy.Request(url=self.url.format(ref=getattr(self, "ref")))
 
     @staticmethod
     def prepare(s: scrapy.Selector):
