@@ -1,19 +1,15 @@
 import scrapy
-from urllib.parse import urlencode
 import json
+from pykp.scraper.requests import UrlEncodedRequest
 
 
 class TimetablesSpider(scrapy.Spider):
     name = "timetables"
     allowed_domains = ["portalpasazera.pl"]
+    url = "https://portalpasazera.pl/Wyszukiwarka/ZnajdzPociag"
 
     def start_requests(self):
-        url = "https://portalpasazera.pl/Wyszukiwarka/ZnajdzPociag"
         credentials = json.loads(getattr(self, "credentials"))
-
-        headers = credentials["headers"]
-        headers["Content-Type"] = "application/x-www-form-urlencoded"
-
         data = {
             "kryteria[O]": "true",
             "kryteria[S]": getattr(self, "id"),
@@ -23,12 +19,11 @@ class TimetablesSpider(scrapy.Spider):
 
         for t in ["00:00", "06:00", "12:00", "18:00"]:
             data["kryteria[G]"] = t
-            yield scrapy.Request(
-                url=url,
-                method="POST",
-                headers=headers,
+            yield UrlEncodedRequest(
+                url=self.url,
+                headers=credentials["headers"],
                 cookies=credentials["cookies"],
-                body=urlencode(data),
+                data=data,
             )
 
     def parse(self, response):
