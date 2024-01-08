@@ -2,8 +2,18 @@ from django.http import HttpRequest, HttpResponse, HttpResponseBadRequest
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_http_methods
 from django.contrib.gis.geos import Point
+from django.core.serializers import serialize
 from pykp.geo.models import Location
 from overpy import Overpass
+
+
+@csrf_exempt
+@require_http_methods(["GET"])
+def get_locations(request: HttpRequest):
+    response_body = serialize(
+        "geojson", Location.objects.all(), geometry_field="point"
+    ).encode()
+    return HttpResponse(response_body)
 
 
 @csrf_exempt
