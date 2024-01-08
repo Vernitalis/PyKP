@@ -1,3 +1,11 @@
+const zoomButtonsClasses = "btn-sm btn-ghost join-item"
+
+const zoomControl = new ol.control.Zoom({
+	className: "absolute bg-base-100 bottom-4 left-4 join join-vertical shadow-xl",
+	zoomInClassName: zoomButtonsClasses,
+	zoomOutClassName: zoomButtonsClasses
+})
+
 const countryOutlineStyle = new ol.style.Style({
 	fill: undefined,
 	stroke: new ol.style.Stroke({
@@ -29,6 +37,7 @@ const countryOutlineLayer = new ol.layer.Vector({
 const homeMap = new ol.Map({
 	target: 'map-container',
 	layers: [osmLayer, railwayLayer, countryOutlineLayer],
+	controls: [zoomControl],
 	view: new ol.View({
 		center: ol.proj.fromLonLat([19, 52]),
 		zoom: 6,
