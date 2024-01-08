@@ -1,4 +1,4 @@
-# from django.urls import path
-# from pykp.geo import views
+from django.urls import path
+from pykp.geo import views
 
-urlpatterns = []
+urlpatterns = [path("FetchLocations", views.fetch_locations)]
