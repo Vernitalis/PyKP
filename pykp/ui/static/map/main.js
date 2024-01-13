@@ -29,7 +29,7 @@ const railwayLayer = new ol.layer.Tile({
 const countryOutlineLayer = new ol.layer.Vector({
 	source: new ol.source.Vector({
 		format: new ol.format.GeoJSON(),
-		url: "https://polygons.openstreetmap.fr/get_geojson.py?id=49715&params=0.010000-0.010000-0.010000"
+		url: "/static/map/poland.geojson"
 	}),
 	style: countryOutlineStyle
 })
