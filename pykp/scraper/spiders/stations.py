@@ -9,8 +9,8 @@ class StationsSpider(PaginatedSpider):
     name = "stations"
     allowed_domains = ["portalpasazera.pl"]
     start_urls = [
-        "https://portalpasazera.pl/KatalogStacji?nazwa={name}".format(name=l)
-        for l in letters
+        "https://portalpasazera.pl/KatalogStacji?nazwa={name}".format(name=letter)
+        for letter in letters
     ]
 
     def search_station(self, response):

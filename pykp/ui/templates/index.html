@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE HTML>
+<html lang="pl" data-theme="cmyk" class="h-full">
+	<head>
+		<meta charset="utf-8">
+		<title>PyKP</title>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/openlayers/8.2.0/dist/ol.min.js" integrity="sha512-+nvfloZUX7awRy1yslYBsicmHKh/qFW5w79+AiGiNcbewg0nBy7AS4G3+aK/Rm+eGPOKlO3tLuVphMxFXeKeOQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+		<script src="https://cdn.tailwindcss.com"></script>
+		<script src="{% static 'map/main.js' %}" defer></script>
+		<script src="{% static 'ui/main.js' %}" defer></script>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/daisyui/4.6.0/full.min.css" integrity="sha512-w62QV7vjbp5FM2KDzH/EqmT4nMGoyr4P8aZNl8S6IFMtRYanBAXwbPu85YeEPwXdJzvMHkfmtK43GXZlePE8iQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+		<link rel="stylesheet" href="{% static 'map/style.css' %}">
+		<!-- Disable favicon-->
+		<link rel="icon" href="data:,">
+	</head>
+	<body class="h-full">
+		{% include "map.html" %}
+		{% include "logo.html" %}
+		{% include "side-menu.html" %}
+        {% include "popup.html" %}
+	</body>
+
+
+</html>
+

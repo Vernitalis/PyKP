@@ -1,14 +1,16 @@
 import scrapy
 from pykp.scraper.items import TrainItem
 from pykp.scraper.spiders.paginated import PaginatedSpider
+from urllib.parse import urlparse, parse_qs
 
 
 class TrainsSpider(PaginatedSpider):
     name = "trains"
     allowed_domains = ["portalpasazera.pl"]
-    start_urls = [
-        "https://portalpasazera.pl/WynikiWyszukiwania/ZnajdzPociag?sid=Yscc2FfZuluscc2Feumvag8p1eYrVLkFOwdrCy30fWSLozlULG69scc2FUneX5xv30ZF2ILG8YWe8rmnKLagOtAxkgXIQlcWRZNepCvjGj8PPSczR53dQn4PCnpMGkQ0FeIA4v8kT7TP"
-    ]
+    url = "https://portalpasazera.pl/WynikiWyszukiwania/ZnajdzPociag?sid={ref}"
+
+    def start_requests(self):
+        yield scrapy.Request(url=self.url.format(ref=getattr(self, "ref")))
 
     @staticmethod
     def prepare(s: scrapy.Selector):
@@ -30,6 +32,9 @@ class TrainsSpider(PaginatedSpider):
             start = self.prepare(fields[6].xpath("./strong/span[1]/text()"))
             destination = self.prepare(fields[6].xpath("./strong/span[2]/text()"))
             url = self.prepare(row.xpath("./a/@href"))
+            parsed_url = urlparse(url)
+            url_query = parse_qs(parsed_url.query)
+
             item = TrainItem(
                 departure=departure,
                 platform=platform,
@@ -39,6 +44,7 @@ class TrainsSpider(PaginatedSpider):
                 id=id,
                 start=start,
                 destination=destination,
-                url=url,
+                pid=url_query["pid"][0],
+                sid=url_query["sid"][0],
             )
             yield item

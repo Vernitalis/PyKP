@@ -21,7 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = environ["SECRET_KEY"]
+SECRET_KEY = "django-insecure-)lo=go!#&y4f$mr%9o!n&$a!k(s#d%-j*9uymoz-txvvyw8p%8"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -35,11 +35,13 @@ INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
-    "django.contrib.sessions",
+    "django.contrib.gis",
     "django.contrib.messages",
+    "django.contrib.sessions",
     "django.contrib.staticfiles",
     "pykp.shared",
-    "pykp.rest",
+    "pykp.geo",
+    "pykp.dataloader",
     "pykp.ui",
 ]
 
@@ -79,7 +81,7 @@ WSGI_APPLICATION = "pykp.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
+        "ENGINE": "django.contrib.gis.db.backends.spatialite",
         "NAME": BASE_DIR / "db.sqlite3",
     }
 }
@@ -125,3 +127,5 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+GDAL_LIBRARY_PATH = "C:/OSGeo4W/bin/gdal308.dll"
