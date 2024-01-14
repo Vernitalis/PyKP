@@ -1,5 +1,5 @@
 from django.urls import path
-from pykp.rest import views
+from pykp.dataloader import views
 
 urlpatterns = [
     path("ImportStations", views.import_stations),
