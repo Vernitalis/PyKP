@@ -1,21 +1,8 @@
-class ClassList {
-	constructor(classes = []) {
-		this.list = classes;
-	}
+import { PykpMap } from "./map.js";
+import { createTooltip } from "./components.js";
+import { ClassList } from "./utils.js";
 
-	add(element) {
-		this.list.forEach(item => {
-			element.classList.add(item);
-		});
-	}
-
-	remove(element) {
-		this.list.forEach(item => {
-			element.classList.remove(item);
-		});
-	}
-
-}
+const map = new PykpMap("map-container");
 
 const sideMenuButton = document.querySelector("#side-menu-button");
 const sideMenu = {
@@ -39,7 +26,6 @@ const sideMenu = {
 	},
 	toggle: function() {
 		this.isEnabled = !this.isEnabled;
-		// console.info(`Side Menu toggled to ${this.isEnabled}`);
 	}
 }
 
