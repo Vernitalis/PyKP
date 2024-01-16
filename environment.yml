@@ -4,7 +4,6 @@ channels:
 dependencies:
   - python=3.11
   - django=5.0
-  - overpy=0.7
   - scrapy=2.11
   - libspatialite=5.1
   - libgdal=3.8
