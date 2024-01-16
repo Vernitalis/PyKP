@@ -5,18 +5,13 @@ import datetime
 
 
 class SetupLogFile:
-    def __init__(self, crawler, log_file) -> None:
-        super().__init__()
-        self.crawler = crawler
-        self.log_file = log_file
+    def update_settings(self, settings):
+        if settings.get("LOG_FILE"):
+            raise NotConfigured("LOG_FILE is set. Skipping log file setup...")
 
-    @classmethod
-    def from_crawler(cls, crawler):
-        logs_prefix = crawler.settings.get("LOGS_PREFIX")
-        if crawler.settings.get("LOG_FILE") or not logs_prefix:
-            raise NotConfigured
+        logs_prefix = settings.get("BOT_NAME").lower().replace(" ", "_")
+        logs_dir_name = "logs"
 
-        logs_dir_name = crawler.settings.get("LOGS_DIR") or "logs"
         project_root = Path(closest_scrapy_cfg(__file__)).parent
         logs_dir = project_root / logs_dir_name
         logs_dir.mkdir(exist_ok=True, parents=True)
@@ -27,7 +22,4 @@ class SetupLogFile:
         )
 
         log_file = str(logs_dir / log_file_name)
-        return cls(crawler, log_file)
-
-    def update_settings(self, settings):
-        settings.set("LOG_FILE", self.log_file, "addon")
+        settings.set("LOG_FILE", log_file, "addon")

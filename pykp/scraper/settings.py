@@ -82,6 +82,4 @@ REQUEST_FINGERPRINTER_IMPLEMENTATION = "2.7"
 TWISTED_REACTOR = "twisted.internet.asyncioreactor.AsyncioSelectorReactor"
 FEED_EXPORT_ENCODING = "utf-8"
 
-LOGS_PREFIX = "pykp_scraper"
-
 ADDONS = {"pykp.scraper.addons.SetupLogFile": 300}
