@@ -8,6 +8,13 @@ class CredentialsSpider(scrapy.Spider):
     allowed_domains = ["portalpasazera.pl"]
     start_urls = ["https://www.portalpasazera.pl"]
 
+    @classmethod
+    def update_settings(cls, settings):
+        super().update_settings(settings)
+        settings.setdefault("ITEM_PIPELINES", {}).update(
+            {"pykp.scraper.pipelines.EnvironmentVariableOutput": 1000}
+        )
+
     def parse(self, response):
         cookies = [c.decode() for c in response.headers.getlist("Set-Cookie")]
         cookies_filter = filter(
