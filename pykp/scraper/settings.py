@@ -25,7 +25,7 @@ ROBOTSTXT_OBEY = False
 # COOKIES_ENABLED = False
 
 # Disable Telnet Console (enabled by default)
-# TELNETCONSOLE_ENABLED = False
+TELNETCONSOLE_ENABLED = False
 
 # Override the default request headers:
 DEFAULT_REQUEST_HEADERS = {
@@ -47,9 +47,8 @@ DEFAULT_REQUEST_HEADERS = {
 
 # Enable or disable extensions
 # See https://docs.scrapy.org/en/latest/topics/extensions.html
-EXTENSIONS = {
-    "scrapy.extensions.telnet.TelnetConsole": None,
-}
+# EXTENSIONS = {
+# }
 
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
@@ -85,4 +84,4 @@ FEED_EXPORT_ENCODING = "utf-8"
 
 LOGS_PREFIX = "pykp_scraper"
 
-ADDONS = {"pykp.scraper.extensions.SetupLogFile": 300}
+ADDONS = {"pykp.scraper.addons.SetupLogFile": 300}
