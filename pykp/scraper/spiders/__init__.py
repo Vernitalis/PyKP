@@ -1,4 +1,13 @@
-# This package will contain the spiders of your Scrapy project
-#
-# Please refer to the documentation for information on how to create and manage
-# your spiders.
+from pykp.scraper.spiders.credentials import CredentialsSpider
+from pykp.scraper.spiders.locations import LocationsSpider
+from pykp.scraper.spiders.stations import StationsSpider
+from pykp.scraper.spiders.timetables import TimetablesSpider
+from pykp.scraper.spiders.trains import TrainsSpider
+
+__all__ = [
+    "CredentialsSpider",
+    "LocationsSpider",
+    "StationsSpider",
+    "TimetablesSpider",
+    "TrainsSpider",
+]
