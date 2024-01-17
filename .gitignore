@@ -2,3 +2,5 @@ __pycache__/
 *.sqlite3
 .DS_Store
 logs/
+!**/migrations/__init__.py
+**/migrations/*.py
