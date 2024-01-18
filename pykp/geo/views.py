@@ -15,7 +15,7 @@ def refresh_outline(osm_id):
     params = {"id": osm_id, "params": 0}
     try:
         outline = Outline.objects.get(osm_relation_id=osm_id)
-        delta = (datetime.now(timezone.utc) - outline.last_udpdate).total_seconds()
+        delta = (datetime.now(timezone.utc) - outline.last_update).total_seconds()
         if delta < (24 * 3600):
             return outline
         try:
