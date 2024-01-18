@@ -1,7 +1,7 @@
 from itemadapter.adapter import ItemAdapter
 from scrapy.utils.defer import maybe_deferred_to_future
 from scrapy.http.request.json_request import JsonRequest
-from scrapy.exceptions import CloseSpider
+from scrapy.exceptions import CloseSpider, DropItem
 import json
 import os
 
@@ -34,3 +34,17 @@ class HttpUploadItems:
         except Exception:
             raise CloseSpider("An error during uploading the items has occured")
         return item
+
+
+class DiscardDuplicates:
+    def __init__(self):
+        self.seen_ids = set()
+
+    def process_item(self, item, spider):
+        adapter = ItemAdapter(item)
+        id = adapter.get("id")
+        if id in self.seen_ids:
+            raise DropItem("Discarding duplicate item: id={id}".format(id=id))
+        else:
+            self.seen_ids.add(id)
+            return item
