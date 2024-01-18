@@ -7,6 +7,6 @@ dependencies:
   - scrapy=2.11
   - libspatialite=5.1
   - libgdal=3.8
-  - pip
-  - pip:
-    - -r requirements-dev.txt
+  - requests=2.31
+  - ruff=0.1.11
+  - pre-commit=3.6
