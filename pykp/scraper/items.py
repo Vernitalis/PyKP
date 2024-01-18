@@ -32,3 +32,10 @@ class LocationItem(Item):
     station_id = Field()
     x = Field()
     y = Field()
+
+
+class TimetableItem(Item):
+    id = Field()
+    ref = Field()
+    time = Field()
+    token = Field()
