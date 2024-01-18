@@ -4,8 +4,7 @@ SPIDER_MODULES = ["pykp.scraper.spiders"]
 NEWSPIDER_MODULE = "pykp.scraper.spiders"
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-# USER_AGENT = "PyKP scraper(kot@student.agh.edu.pl)"
-USER_AGENT = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+USER_AGENT = "PyKP scraper(kot@student.agh.edu.pl)"
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = False
