@@ -1,6 +1,6 @@
 import scrapy
 import json
-from pykp.scraper.requests import UrlEncodedRequest
+from ..requests import UrlEncodedRequest
 
 
 class TimetablesSpider(scrapy.Spider):

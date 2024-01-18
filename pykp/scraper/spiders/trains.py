@@ -1,6 +1,6 @@
 import scrapy
-from pykp.scraper.items import TrainItem
-from pykp.scraper.spiders.paginated import PaginatedSpider
+from ..items import TrainItem
+from .paginated import PaginatedSpider
 from urllib.parse import urlparse, parse_qs
 
 

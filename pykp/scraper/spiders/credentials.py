@@ -1,4 +1,4 @@
-from pykp.scraper.items import CredentialsItem
+from ..items import CredentialsItem
 import re
 import scrapy
 

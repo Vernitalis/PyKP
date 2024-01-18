@@ -1,7 +1,7 @@
 import scrapy
 import json
-from pykp.scraper.items import LocationItem
-from pykp.scraper.requests import UrlEncodedRequest
+from ..items import LocationItem
+from ..requests import UrlEncodedRequest
 
 
 class LocationsSpider(scrapy.Spider):

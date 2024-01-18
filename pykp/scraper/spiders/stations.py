@@ -1,5 +1,5 @@
-from pykp.scraper.items import StationItem
-from pykp.scraper.spiders.paginated import PaginatedSpider
+from ..items import StationItem
+from .paginated import PaginatedSpider
 
 
 letters = "aąbcćdeęfghijklłmnńoóprstuyzźż"
