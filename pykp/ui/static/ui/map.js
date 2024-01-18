@@ -61,7 +61,7 @@ export class PykpMap extends ol.Map {
 			layers: [osmLayer, railwayLayer, countryOutlineLayer, stationsPointsLayer],
 			controls: [zoomControl],
 			view: new ol.View({
-				center: ol.proj.fromLonLat([19, 52]),
+				center: ol.proj.fromLonLat([19.134422, 52.215933]),
 				zoom: 6,
 				constrainResolution: true
 			}),
