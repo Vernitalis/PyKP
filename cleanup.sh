@@ -10,3 +10,9 @@ find "$ROOT_DIR" -iname "__pycache__" -exec rm -rf {} +
 
 # remove logs
 rm -r "$ROOT_DIR/logs"
+
+# remove the database
+rm "$ROOT_DIR/db.sqlite3"
+
+# make fresh migrations
+"$ROOT_DIR/manage.py" makemigrations
