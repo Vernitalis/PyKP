@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class PykpDataloaderConfig(AppConfig):
+class PykpScraperrConfig(AppConfig):
     default_auto_field = "django.db.models.BigAutoField"
-    name = "pykp.dataloader"
+    name = "pykp.scraper"

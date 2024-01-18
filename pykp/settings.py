@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "pykp.shared",
     "pykp.geo",
-    "pykp.dataloader",
+    "pykp.scraper",
     "pykp.ui",
 ]
 
