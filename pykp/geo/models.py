@@ -11,3 +11,12 @@ class Location(models.Model):
 
     class Meta:
         db_table = "locations"
+
+
+class Outline(models.Model):
+    osm_relation_id = models.IntegerField(unique=True)
+    polygon = models.MultiPolygonField(blank=True)
+    last_udpdate = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        db_table = "outlines"
