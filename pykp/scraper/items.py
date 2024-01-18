@@ -34,7 +34,7 @@ class LocationItem(Item):
     y = Field()
 
 
-class TimetableItem(Item):
+class RefItem(Item):
     id = Field()
     ref = Field()
     time = Field()

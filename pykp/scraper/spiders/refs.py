@@ -3,8 +3,8 @@ import json
 from ..requests import UrlEncodedRequest
 
 
-class TimetablesSpider(scrapy.Spider):
-    name = "timetables"
+class RefsSpider(scrapy.Spider):
+    name = "refs"
     allowed_domains = ["portalpasazera.pl"]
     url = "https://portalpasazera.pl/Wyszukiwarka/ZnajdzPociag"
 
