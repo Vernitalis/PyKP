@@ -31,7 +31,7 @@ const railwayLayer = new ol.layer.Tile({
 const countryOutlineLayer = new ol.layer.Vector({
 	source: new ol.source.Vector({
 		format: new ol.format.GeoJSON(),
-		url: "/static/ui/poland.geojson"
+		url: "/geo/GetOutline"
 	}),
 	style: countryOutlineStyle
 });
